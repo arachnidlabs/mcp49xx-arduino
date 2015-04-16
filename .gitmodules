@@ -1,0 +1,3 @@
+[submodule "src/mcp49xx"]
+	path = src/mcp49xx
+	url = https://github.com/arachnidlabs/mcp49xx.git
