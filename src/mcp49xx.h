@@ -12,11 +12,7 @@ class MCP49XX {
 	public:
 		MCP49XX(byte select_pin = SS);
 
-		void begin() {
-			pinMode(m_select_pin, OUTPUT);
-			digitalWrite(m_select_pin, HIGH);
-			SPI.begin();
-		}
+		void begin();
 
 		void setIsBuffered(uint8_t idx, uint8_t is_buffered) {
 			mcp49xx_set_is_buffered(&dac, idx, is_buffered);
@@ -35,8 +31,8 @@ class MCP49XX {
 		}
 
 		void spi_transfer(char data[], int len);
-	private:
 		byte m_select_pin;
+	private:
 		mcp49xx_t dac;
 };
 

@@ -20,8 +20,15 @@ void MCP49XX::spi_transfer(char data[], int len) {
 
 	// Deassert CS
 	digitalWrite(m_select_pin, HIGH);
+
 }
 
 MCP49XX::MCP49XX(byte select_pin) : m_select_pin(select_pin) {
+}
+
+void MCP49XX::begin() {
+	pinMode(m_select_pin, OUTPUT);
+	digitalWrite(m_select_pin, HIGH);
+	SPI.begin();
 	mcp49xx_init(&dac, &_transfer_func, this);
 }
